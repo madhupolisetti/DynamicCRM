@@ -1,0 +1,22 @@
+var opendata = function () {
+    function e() {
+        var e = Xrm.Page.data.entity.getId(),
+            t = new XMLHttpRequest;
+            debugger;
+        t.open("GET", Xrm.Page.context.getClientUrl() + "/api/data/v8.0/my_senderinfos?$filter=my_name eq '" + e + "'and  my_senderid eq 'ImtiyazPlugin'", !0), t.setRequestHeader("OData-MaxVersion", "4.0"), t.setRequestHeader("OData-Version", "4.0"), t.setRequestHeader("Accept", "application/json"), t.setRequestHeader("Content-Type", "application/json; charset=utf-8"), t.setRequestHeader("Prefer", 'odata.include-annotations="OData.Community.Display.V1.FormattedValue"'), t.onreadystatechange = function () {
+            if (4 === this.readyState)
+                if (t.onreadystatechange = null, 200 === this.status)
+                    for (var e = JSON.parse(this.response), a = 0; a < e.value.length; a++) setTimeout(function () {
+                    debugger;
+                        "fail" == e.value[0].description ? (alert("Data Retrive Failed"), Xrm.Page.ui.clearFormNotification("1")) : (alert("Report Retrieved Successfully"), Xrm.Page.ui.clearFormNotification("1"))
+Xrm.Page.data.refresh()
+                    }, 4e3);
+                else alert(this.statusText)
+        }, t.send()
+    }
+    Xrm.Page.ui.setFormNotification("Please wait, System is retrieving data...", "WARNING", "1"), {
+        prefix: "billto_",
+        guid: Xrm.Page.data.entity.getId(),
+        entityName: Xrm.Page.data.entity.getEntityName()
+    }, e()
+};

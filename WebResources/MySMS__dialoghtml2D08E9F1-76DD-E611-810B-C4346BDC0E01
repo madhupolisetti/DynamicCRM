@@ -1,0 +1,361 @@
+<html><head>
+    <title></title>
+    <script type="text/javascript" src="../ClientGlobalContext.js.aspx"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+    <script src="app/sdk.rest.js"></script>
+    <script src="app/Block.js"></script>
+
+    <style type="text/css">
+        body {
+            direction: LTR;
+            margin: 0px;
+            border: 0px;
+            cursor: default;
+            font-family: Segoe UI,Tahoma,Arial;
+            font-size: 11px;
+        }
+
+        .ms-crm-RefreshDialog-Header {
+            top: 0px;
+            position: absolute;
+            width: 96%;
+            height: 75px;
+            padding-top: 10px;
+            background-color: #FFFFFF;
+            border-bottom-color: #A4ABB2;
+        }
+
+        DIV.ms-crm-RefreshDialog-Header-Title {
+            font-weight: Lighter;
+            font-size: 27px;
+            font-family: Segoe UI Light, Segoe UI, Tahoma, Arial;
+            margin-left: 30px;
+            margin-right: 30px;
+            color: #262626;
+        }
+
+        .ms-crm-TextAutoEllipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .ms-crm-RefreshDialog-Header-Desc {
+            padding-top: 4px;
+            font-family: Segoe UI,Tahoma,Arial;
+            margin-left: 30px;
+            margin-right: 30px;
+            color: #666666;
+            font-size: 12px;
+        }
+
+        .ms-crm-RefreshDialog-Main {
+            font-size: 12px;
+            top: 90px;
+            position: absolute;
+            bottom: 49px;
+            vertical-align: top;
+            width: 95%;
+            font-family: Segoe UI,Tahoma,Arial;
+            color: #444444;
+            background-color: #FFFFFF;
+            border-bottom-color: #A4ABB2;
+            right: 30px;
+            left: 30px;
+        }
+
+        .ms-crm-RefreshDialog-Footer {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            min-width: 288px;
+            height: 44px;
+            text-align: right;
+            background-color: #F8F8F8;
+            border-top-color: #FFFFFF;
+        }
+
+        .ms-crm-RefreshDialog-Button {
+            color: #444444;
+            background-color: #FFFFFF;
+            height: 24px;
+            font-family: Segoe UI,Tahoma,Arial;
+            border: 1px solid #C6C6C6;
+            background-image: none;
+            margin-top: 10px;
+            width: auto;
+            min-width: 80px;
+            white-space: nowrap;
+            font-size: 12px;
+            line-height: 16px;
+            width: 84px;
+            text-align: center;
+            cursor: pointer;
+            background-repeat: repeat-x;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    </style>
+    <meta>
+    <meta>
+<meta><meta><meta></head>
+<body style="word-wrap: break-word;">
+    <div class="ms-crm-RefreshDialog-Main-Container" style="font-family: undefined;">
+        <div class="ms-crm-RefreshDialog-Header" id="tdDialogHeader">
+            <div id="dialogHeaderTitle" class="ms-crm-RefreshDialog-Header-Title ms-crm-TextAutoEllipsis" title="Your dialog header" style="width: 75%;">Enter the message below</div>
+
+
+            <div id="DlgHdBodyContainer" class="ms-crm-RefreshDialog-Main">
+
+
+                <textarea rows="2" cols="62" maxlength="300" id="msg"></textarea>
+                <br>
+                <br>
+                <label style="font-weight:bold" for="SenderId">Sender Id*:</label>
+
+                <select id="slct"></select>
+                <label style="font-weight:bold" for="">Target Language:</label>
+                <select id="msgtype_list">
+                    <option value="en">English</option>
+                    <option value="te">Telugu</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ta">Tamil</option>
+                    <option value="kn">Kannada</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="mr">Marathi</option>
+                    <option value="pa">Punjabi</option>
+                    <option value="ur">Urdu</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="bn">Bengali</option>
+                    <option value="ar">Arabic</option>
+                    <option value="zh">Chinese</option>
+                    <option value="el">Greek</option>
+                    <option value="ne">Nepali</option>
+                    <option value="fa">Persian</option>
+                    <option value="ru">Russian</option>
+                    <option value="zh">Chinese</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="kn">Kannada</option>
+                    <option value="id">Indonasian</option>
+               
+
+                </select>
+            </div>
+        </div>
+        <div class="ms-crm-RefreshDialog-Footer" id="tdDialogFooter">
+            <button id="btnOK" onclick="create1()" type="button" class="ms-crm-RefreshDialog-Button" tabindex="1" style="margin-left: 8px;">
+                Send
+            </button>
+            <button id="cmdDialogCancel" onclick="closeWindow();" type="button" class="ms-crm-RefreshDialog-Button" tabindex="1" style="margin-left: 8px; margin-right: 30px">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+
+var cdata = {};
+function GetClientUrl() {
+    return Xrm.Page.context.getClientUrl() + "/XRMServices/2011/Organization.svc/web"
+
+}
+
+    function GetParaMeter(name) {
+        name = 'Data';
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+
+    }
+
+
+    Load();
+
+    function create1() {
+    var e = document.getElementById("msgtype_list");
+var strlng = e.options[e.selectedIndex].value;
+
+        var sel = "";
+        var sl = $('#slct option:selected').val();
+        if (sl == undefined || sl == '' || sl == null) {
+
+        }
+        else {
+            sel = sl;
+        }
+        $("#btnOK").prop("disabled", true);
+        var res = GetParaMeter('Data');
+        var msg = '';
+        var par = JSON.parse(res);
+        msg = $('textarea#msg').val();
+
+
+        if (msg == '') {
+            $("#btnOK").prop("disabled", false);
+            alert("Please type the message");
+            return;
+        }
+
+
+        var mult = "";
+if(par.guid.length==1)
+{
+ alert("Please select more than one record");
+ return;
+}
+        for (var i = 0; i < par.guid.length; i++) {
+
+            var obj = par.guid[i].toString().replace(/[{}]/g, "");
+
+            mult = mult + '+' + obj;
+        }
+
+        if (mult == "") {
+            alert("You have not selected any record");
+        }
+        else {
+            var entity = {};
+            entity.my_name = par.entityName.toString();
+            entity.my_GuidList = par.guid.toString();
+            entity.my_message = msg;
+            entity.my_senderid = sel;
+             entity.my_Language = strlng;
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                url: Xrm.Page.context.getClientUrl() + "/XRMServices/2011/OrganizationData.svc/my_bulksmsSet",
+                data: JSON.stringify(entity),
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("Accept", "application/json");
+                },
+                async: true,
+                success: function (data, textStatus, xhr) {
+                    var result = data.d;
+                    var newEntityId = result.my_bulksmsId;
+                  
+                    closeWindow();
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert(textStatus + " " + errorThrown);
+                }
+            });
+
+        }
+
+    }
+
+    function Load() {
+        $.blockUI();
+        SDK.REST.retrieveMultipleRecords(
+       "my_smscountrycredentials",
+       "?$select=my_Account,my_AuthKey,my_AuthToken,my_SenderId,my_smscountrycredentialsId&$expand=user_my_smscountrycredentials",
+       function (results) {
+
+           var dataobj = [];
+
+           cdata = {
+               "smscountrycredentialsId": results[0].my_smscountrycredentialsId,
+               "AuthKey": results[0].my_AuthKey, "AuthToken": results[0].my_AuthToken, "SenderId": results[0].my_SenderId
+
+
+
+
+           };
+
+           setTimeout(function () {
+
+
+             
+               GetSenderid(cdata.AuthKey, cdata.AuthToken);
+
+           }, 1000);
+
+
+
+
+
+
+
+       }, function (error) {
+           alert(error.message);
+       },
+          function () {
+
+
+          }
+
+       )
+    };
+    var keeys = [];
+
+    function GetSenderid(skey, token) {
+        if (skey != null && token != null && token != "" && skey != "") {
+            $.blockUI();
+           
+            var encodedString = btoa(skey + ":" + token);
+          
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://restapi.smscountry.com/v0.1/Accounts/" + skey + "/SenderIDs/",
+                "method": "GET",
+                "headers": {
+                    "authorization": "Basic " + encodedString
+
+                }
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "https://restapi.smscountry.com/v0.1/Accounts/" + skey + "/SenderIDs/",
+                async: false,
+                crossDomain: true,
+                headers: {
+                    "authorization": "Basic " + encodedString
+
+                },
+
+                success: function (response) {
+                    var k = response;
+                    keeys = k.SenderIds;
+                    setTimeout(function () {
+                              var k = response;
+                                keeys = k.SenderIds;
+                                for (var i = 0; i < keeys.length; i++) {
+
+                                   $('<option>').val(keeys[i].SenderId).text(keeys[i].SenderId).appendTo('#slct');
+
+                               }
+                               $.unblockUI();
+                               
+
+                           }, 1000);
+
+                },
+                error: function (textStatus, errorThrown) {
+                     $.unblockUI();
+                     alert("Account Not found, Please check the configuration");
+                }
+
+            });
+
+
+
+        }
+        else {
+            alert("Please fill in AuthToke detail");
+        }
+
+
+    }
+    </script>
+
+</body></html>

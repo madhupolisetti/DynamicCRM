@@ -1,0 +1,36 @@
+var opendata = function (selected, entity, ref) {
+   
+    function GetClientUrl() {
+        return Xrm.Page.context.getClientUrl()
+
+    }
+
+    var addParams = "Param1=" + 1 + "&Param2=" + 2;
+    var webresourceurl = "https://myhs2.crm8.dynamics.com//WebResources/MySMS__/dialog.html?Data=" + encodeURIComponent(addParams);
+
+
+    var DialogOptions = new Xrm.DialogOptions();
+    DialogOptions.width = 500;
+    DialogOptions.height = 500;
+
+    //Xrm.Internal.openDialog(Mscrm.CrmUri.create(webresourceurl), DialogOptions, null, null, callBackFunction);
+    //Xrm.Internal.openDialog(webresourceurl, 
+    //  DialogOption, 
+    // null, null, 
+    //  CallbackFunction);
+
+    var urlData = {
+
+        'guid': selected,
+        'entityName': entity
+    };
+    var data = encodeURIComponent(JSON.stringify(urlData));
+    var resource = window.open(GetClientUrl() + '/WebResources/MySMS__/dialog.html?Data=' + data, '_blank', 'status=yes,toobar=yes,resizeable=yes,menubar=yes,height=300,width=500');
+    resource.focus();
+
+    function callBackFunction(result) {
+        alert(result);
+    }
+
+
+}

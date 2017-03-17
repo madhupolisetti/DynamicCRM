@@ -1,0 +1,148 @@
+<ImportExportXml version="8.2.0000.0781" SolutionPackageVersion="8.0" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>MYSMS</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="MYSMS" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>1</Managed>
+    <ConfigurationPage>MySMS__/SMSConfiguration.html</ConfigurationPage>
+    <Publisher>
+      <UniqueName>moreyeahs</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Moreyeahs" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>my</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>36476</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="campaign" behavior="1" />
+      <RootComponent type="1" schemaName="contact" behavior="1" />
+      <RootComponent type="1" schemaName="incident" behavior="1" />
+      <RootComponent type="1" schemaName="invoice" behavior="1" />
+      <RootComponent type="1" schemaName="lead" behavior="0" />
+      <RootComponent type="1" schemaName="my_bulksms" behavior="0" />
+      <RootComponent type="1" schemaName="my_bulk_response" behavior="0" />
+      <RootComponent type="1" schemaName="my_senderinfo" behavior="0" />
+      <RootComponent type="1" schemaName="my_sms" behavior="0" />
+      <RootComponent type="1" schemaName="my_smscountrycredentials" behavior="0" />
+      <RootComponent type="1" schemaName="my_sms_response" behavior="0" />
+      <RootComponent type="1" schemaName="my_sms_template" behavior="0" />
+      <RootComponent type="1" schemaName="opportunity" behavior="1" />
+      <RootComponent type="1" schemaName="quote" behavior="1" />
+      <RootComponent type="1" schemaName="salesorder" behavior="1" />
+      <RootComponent type="9" schemaName="new_countrycode" behavior="0" />
+      <RootComponent type="9" schemaName="new_language" behavior="0" />
+      <RootComponent type="29" id="{066253af-65c1-475f-9560-f20ab4b803bd}" behavior="0" />
+      <RootComponent type="29" id="{16931a54-bfe2-e611-810f-c4346bdc3c21}" behavior="0" />
+      <RootComponent type="36" id="{204bbbb2-54d9-e611-810e-c4346bdc3c21}" behavior="0" />
+      <RootComponent type="36" id="{55107a0b-6ed9-e611-810e-c4346bdc3c21}" behavior="0" />
+      <RootComponent type="36" id="{65bf91d9-c4dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{6f15aa0e-c5dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{89fa07c3-c4dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{9a0eef31-c5dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{aa7d7842-b9dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{b89b939c-c4dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{cf1c9e51-c5dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{cfb8e5a9-b8dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{cfd00a8e-c5dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="36" id="{eb610835-6ed9-e611-810e-c4346bdc3c21}" behavior="0" />
+      <RootComponent type="36" id="{fa099a7a-c4dc-e611-810b-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="60" id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
+      <RootComponent type="60" id="{21dd72e4-1b75-421e-b2c0-4cad1a337ca5}" behavior="0" />
+      <RootComponent type="60" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+      <RootComponent type="60" id="{a2e282d8-9ea2-4ec4-8351-736faf091731}" behavior="0" />
+      <RootComponent type="60" id="{e3e64e06-7255-4e29-b1ff-40a6e5f1c186}" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/Block.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/jqueriui.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/ribbon.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/ribbon2.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/sdk.rest.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/smsstatus.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/template.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/Underscore.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/app/underscore.min.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/css/bootstrap.css" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/css/bootstrap.min.css" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/css/jqueriui.css" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/dialog.html" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/my_logo.png" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/onChageSMSTemplate.js" behavior="0" />
+      <RootComponent type="61" schemaName="MySMS__/SMSConfiguration.html" behavior="0" />
+      <RootComponent type="61" schemaName="my_fetchmobilenumber" behavior="0" />
+      <RootComponent type="61" schemaName="my_SMSCountrylogo" behavior="0" />
+      <RootComponent type="61" schemaName="my_SMSCountryLogoBig" behavior="0" />
+      <RootComponent type="61" schemaName="my_underscore" behavior="0" />
+      <RootComponent type="62" behavior="0" />
+      <RootComponent type="91" schemaName="SMSPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3d033326b295573a" behavior="0" />
+      <RootComponent type="92" id="{53ef939e-79d9-e611-810e-c4346bdc3c21}" behavior="0" />
+      <RootComponent type="92" id="{b3b78643-75e7-e611-810d-c4346bdc0e01}" behavior="0" />
+      <RootComponent type="92" id="{e02b5e9a-dce6-e611-8115-c4346bdcdf81}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

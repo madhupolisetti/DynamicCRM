@@ -1,0 +1,55 @@
+function FetchContactMobileNumber() {
+    
+    var contact = Xrm.Page.getAttribute('to').getValue();
+
+    if (contact != null && contact[0].entityType == "contact") {
+
+        var contactId = contact[0].id;
+        var serverUrl;
+
+        if (Xrm.Page.context.getClientUrl !== undefined) {
+            serverUrl = Xrm.Page.context.getClientUrl();
+        }
+        else {
+            serverUrl = Xrm.Page.context.getServerUrl();
+        }
+
+        var ODataPath = serverUrl + "/XRMServices/2011/OrganizationData.svc";
+        var contactRequest = new XMLHttpRequest();
+
+        contactRequest.open("GET", ODataPath + "/ContactSet(guid'" + contactId + "')", false);
+        contactRequest.setRequestHeader("Accept", "application/json");
+        contactRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+
+        contactRequest.send();
+        //If request was successful, parse the email address
+        if (contactRequest.status == 200) {
+
+            var retrievedContact = JSON.parse(contactRequest.responseText).d;
+            var MobilePhone = retrievedContact.MobilePhone;
+
+            if (MobilePhone != null) {
+               
+                Xrm.Page.getAttribute('my_mobile').setValue(retrievedContact.MobilePhone);
+            }
+            else {
+                //Default message for when the contact has no email.
+                console.log('contact mobilephone not set');
+                //Xrm.Page.getAttribute('cobalt_contactsemail').setValue("---No Email on Contact---");
+
+            }
+
+        }
+        else {
+          
+           // Xrm.Page.getAttribute('to').setValue("---No Contact Found---");
+        }
+
+    }
+    else {
+       
+        Xrm.Page.getAttribute('to').setValue("");
+    }
+
+    Xrm.Page.getAttribute('to').setSubmitMode("always");
+}

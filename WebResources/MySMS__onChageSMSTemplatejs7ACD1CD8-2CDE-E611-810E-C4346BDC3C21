@@ -1,0 +1,48 @@
+
+function OnChangeOfSMSTemplate() {
+    debugger;
+
+    // if (Xrm.Page.ui.getFormType() == 1) {
+    // get the Phone Call To Recipient
+    var to = Xrm.Page.getAttribute("my_template").getValue();
+    // if the Recipient is an account we continue
+    if (to != null && to != undefined) {
+
+        if (to[0] != undefined && to[0] != null) {
+
+
+            if (to != null && to[0].entityType == "my_sms_template") {
+                // get the account Id
+                var accountId = to[0].id;
+                // get the right url for the OData Query
+                var serverUrl;
+                if (Xrm.Page.context.getClientUrl !== undefined) {
+                    serverUrl = Xrm.Page.context.getClientUrl();
+                } else {
+                    serverUrl = Xrm.Page.context.getServerUrl();
+                }
+                // build the request
+                var ODataPath = serverUrl + "/XRMServices/2011/OrganizationData.svc";
+                var accountRequest = new XMLHttpRequest();
+                accountRequest.open("GET", ODataPath + "/my_sms_templateSet(guid'" + accountId + "')", false);
+                accountRequest.setRequestHeader("Accept", "application/json");
+                accountRequest.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                // execute the request
+                accountRequest.send();
+                if (accountRequest.status === 200) {
+                    var retrievedAccount = JSON.parse(accountRequest.responseText).d;
+                    // retrieve the primary contact of the account
+                    // var primaryContact = retrievedAccount.PrimaryContactId;
+                    // if there is a primary contact we set as new To Recipient
+                    // if (primaryContact.Id != null) {
+                    Xrm.Page.getAttribute("description").setValue(retrievedAccount.my_Message);
+                    // }
+                }
+                else {
+                    alert("error");
+                }
+            }
+        }
+    }
+    //  }
+}
